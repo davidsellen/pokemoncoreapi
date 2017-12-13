@@ -2,17 +2,13 @@
 
 A Poke List API
 
-## Overview
-
-This is a Pokemon API that connects to the Pokemon API and caches the results inside Redis to deliver a full working solution of Http Client and Caching with Redis and docker using dotnet core 2.0.
-
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This is DotNet Web API example that get its pokemon data from a remote API and caches it using Redis in order to deliver a full working solution of distributed application using dotnet core 2.0.
 
 ### Prerequisites
 
-You're going to need Redis, I'm using an Docker image and you can get yourself one by running:
+You're going to need Redis, I'm using an Docker image myself and you can get one by running:
 
 ```
 docker run -d --name myRedis -p 6379:6379 redis
@@ -25,7 +21,7 @@ You can get your development env running by following these steps:
 Get the code
 
 ```
-git clone 
+git clone git@github.com:davidsellen/pokemoncoreapi.git
 ```
 
 Restore dotnet packages
@@ -35,8 +31,12 @@ dotnet restore
 ```
 
 Navigate to http://localhost:5000/api/pokemon to get a list of pokemons
+
 Navigate to http://localhost:5000/api/pokemon/1 to get a single pokemon
 
+## Deployment
+
+TODO: Add docker compose
 
 ## Built With
 
@@ -48,13 +48,13 @@ Navigate to http://localhost:5000/api/pokemon/1 to get a single pokemon
 
 * **David Santos** - *Initial work* - [DavidSantos](https://github.com/davidsellen)
 
-See also the list of [contributors](https://github.com/davidsellen/pokelist/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/davidsellen/pokemoncoreapi/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 * This API cosumes its pokemons from https://pokeapi.co
-* Used some ideas from [Renato Groffe](https://medium.com/@renato.groffe/net-core-2-0-nosql-exemplos-utilizando-mongodb-documentdb-e-redis-be5f5407ff13)
+* Used some ideas from @github/renatogroffe [net-core-2-exemplos](https://medium.com/@renato.groffe/net-core-2-0-nosql-exemplos-utilizando-mongodb-documentdb-e-redis-be5f5407ff13)
