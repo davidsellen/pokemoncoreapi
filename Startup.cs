@@ -39,6 +39,11 @@ namespace pokelist
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+
+            services.AddSwaggerGen(swagger =>
+            {
+                swagger.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My Pokemon API" });
+            });
             
         }
 
@@ -49,6 +54,12 @@ namespace pokelist
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Pokemon API");
+            });
 
             app.UseMvc();
         }
