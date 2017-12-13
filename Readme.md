@@ -1,6 +1,6 @@
-# Project Title
+# DotNet Core Pokemon API
 
-A Poke List API
+A Pokemon List API
 
 ## Getting Started
 
