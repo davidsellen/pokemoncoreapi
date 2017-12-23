@@ -79,4 +79,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * This API cosumes its pokemons from https://pokeapi.co
 * Used some ideas by @renatogroffe [net-core-2-exemplos](https://medium.com/@renato.groffe/net-core-2-0-nosql-exemplos-utilizando-mongodb-documentdb-e-redis-be5f5407ff13)
 
-* Usefull tips config docker compose by @alirizaadiyahsi [docker-web-farm-example] (https://medium.com/volosoft/docker-web-farm-example-with-using-redis-haproxy-and-asp-net-core-web-api-8e3f81217fd2)
+* Usefull tips config docker compose by @alirizaadiyahsi [docker-web-farm-example](https://medium.com/volosoft/docker-web-farm-example-with-using-redis-haproxy-and-asp-net-core-web-api-8e3f81217fd2)
