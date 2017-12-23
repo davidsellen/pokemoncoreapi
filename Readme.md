@@ -45,11 +45,11 @@ Navigate to http://localhost:5000/api/pokemon/1 to get a single pokemon
 using docker follow these steps:
 
 ```
-docker build -t pokerlist .
+docker-compose build
 ````
 
 ```
-docker run -t -p 8080:80 pokerlist
+docker-compose up
 ```
 
 now browse to http://localhost:8080/api/pokemon/ and see the JSON output of:
@@ -77,4 +77,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * This API cosumes its pokemons from https://pokeapi.co
-* Used some ideas from @github/renatogroffe [net-core-2-exemplos](https://medium.com/@renato.groffe/net-core-2-0-nosql-exemplos-utilizando-mongodb-documentdb-e-redis-be5f5407ff13)
+* Used some ideas by @renatogroffe [net-core-2-exemplos](https://medium.com/@renato.groffe/net-core-2-0-nosql-exemplos-utilizando-mongodb-documentdb-e-redis-be5f5407ff13)
+
+* Usefull tips config docker compose by @alirizaadiyahsi [docker-web-farm-example] (https://medium.com/volosoft/docker-web-farm-example-with-using-redis-haproxy-and-asp-net-core-web-api-8e3f81217fd2)

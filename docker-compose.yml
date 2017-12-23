@@ -1,13 +1,15 @@
 version: '3'
+
 services:
-  api: 
-    
-  redis:
-    container_name: redis
+
+  pokelist_api:
+    build: .
+    ports:
+        - "8080:80"  
+    depends_on:   
+        - redis
+
+  redis:  
     image: redis
     ports:
-      - "6379:6379"
-    volumes:
-      - ../data/redis:/data
-    entrypoint: redis-server --appendonly yes
-    restart: always
+        - "6379:6379"

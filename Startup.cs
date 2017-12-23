@@ -29,8 +29,8 @@ namespace pokelist
 
             services.AddDistributedRedisCache(options =>
             {
-                options.Configuration =
-                    Configuration.GetConnectionString("Redis");
+                options.Configuration = System.Net.Dns.GetHostAddressesAsync("pokelist_redis_1").Result.FirstOrDefault().ToString();
+ //                   Configuration.GetConnectionString("Redis");
                 options.InstanceName = Configuration.GetSection("ApplicationSettings").GetValue<string>("RedisInstanceName");
             });
 
