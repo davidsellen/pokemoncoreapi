@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
-namespace pokelist.Model
+using pokelist.Model;
+
+namespace pokelist.Services
 {
     public interface IPokemonService
     {
