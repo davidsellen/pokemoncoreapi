@@ -39,7 +39,6 @@ namespace pokelist.Filters
             
                 var cacheKey = GetTheCacheKey(context);
 
-
                 Console.WriteLine($"before action executes {cacheKey}");
 
                 var cachedString = await _cache.GetStringAsync(cacheKey);
@@ -55,28 +54,36 @@ namespace pokelist.Filters
                 {
                     // do something before the action executes
                     var resultContext = await next();
-                   
-                    var objectResult = (resultContext.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
                     
-                    if (objectResult != null && objectResult.Value != null) 
+                    var result = resultContext.Result;
+                    if (result != null)
                     {
-                        var cacheOptions = new DistributedCacheEntryOptions();
-                        cacheOptions.SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
-                        var jsonSerializerSettings = new JsonSerializerSettings();
-                        jsonSerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                        var jsonString = JsonConvert.SerializeObject(objectResult.Value, jsonSerializerSettings);
-                        await _cache.SetStringAsync(cacheKey, jsonString, cacheOptions);
+                        var value = result.GetType().GetProperty("Value").GetValue(result, null);
+
+                        if (value != null) 
+                        {
+                            await SetTheCache(cacheKey, value);
+                        }
                     }
-                    
                     Console.WriteLine($"after action executes {cacheKey} ");
                    
                 }
                 
             }
 
+            private async Task SetTheCache(string cacheKey, object value)
+            {
+                var cacheOptions = new DistributedCacheEntryOptions();
+                cacheOptions.SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
+                var jsonSerializerSettings = new JsonSerializerSettings();
+                jsonSerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                var jsonString = JsonConvert.SerializeObject(value, jsonSerializerSettings);
+                await _cache.SetStringAsync(cacheKey, jsonString, cacheOptions);   
+            }
+
             private string GetTheCacheKey(ActionExecutingContext context)
             {   
-                var cacheKey = context.HttpContext.Request.Path.Value;
+                var cacheKey = context.HttpContext.Request.Path.Value.Replace("/", "-");
                 return cacheKey;
             }
         }
